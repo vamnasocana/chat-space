@@ -40,8 +40,21 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|groupname|string|null: false, foreign_key: true|
+|groupname|string|null: false|
 
 ### groupテーブルのAssociation
 - has_many :groups_users
 - has_many :users, through: :groups_users
+
+
+
+## userテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|username|string|null: false, add_index :user, :name|
+|email|string|null: false, unique: true|
+
+### userテーブルのAssociation
+- has_many :groups_users
+- has_many :groups, through: :groups_users
