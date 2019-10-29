@@ -1,0 +1,28 @@
+!!!
+<html>
+  %head
+    %meta{charset="utf-8"}
+    %title chat-space
+    %link{rel => "stylesheet" ,href => "2chat-space.css"}
+  
+  %body
+    .side
+      .side-user seo
+      -# 部分テンプレ① side-group（変数はまだ設定していない）
+      =render partial: "messages/side-group", locals: { body: @body, group_id: @group_id }
+    
+    .chat
+      .chat-header
+        .chat-header-groupname sample
+        .chat-header-member Member：seo neko
+        .chat-header-btn Edit
+      
+      .chat-main
+      -# 部分テンプレ② chat-main-message（変数はまだ設定していない)
+      =render partial: "messages/chat-main-message", locals: { body: @body, image: @image, user_id: @user_id }
+      
+      .chat-form
+        .chat-form-input{:placeholder => "type a message"}
+        .chat-form-btn Send
+        
+    
