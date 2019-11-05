@@ -1,0 +1,45 @@
+.wrapper
+
+  = render 'shared/side_bar'
+
+  .chat
+    .header
+      .left-header
+        .left-header__title
+          sample
+        %ul.left-header__members
+          Member：
+          %li.member
+            seo
+          %li.member
+            neko
+      .right-header
+        .right-header__button
+          Edit
+    .messages
+      .message
+        .upper-message
+          .upper-message__user-name
+            seo
+          .upper-message__date
+            2019/10/31
+        .lower-meesage
+          .lower-message__content
+            Hello world!!
+      .message
+        .upper-message
+          .upper-message__user-name
+            neko
+          .upper-message__date
+            2019/10/31
+        .lower-meesage
+          .lower-message__content
+            Good bye world!!
+    .form
+      %form
+        %input.form__message{placeholder: '  type a message'}
+        .form__mask
+          %label.form__mask__image
+            = fa_icon 'picture-o', class: 'icon'
+            %input.hidden{type: 'file'}
+        %input.form__submit{type: 'submit', value: 'Send'}
