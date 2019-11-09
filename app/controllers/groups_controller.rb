@@ -1,5 +1,4 @@
 class GroupsController < ApplicationController
-  new, :create, :edit, :update
   def new
   end
 
