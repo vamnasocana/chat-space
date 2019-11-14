@@ -18,24 +18,8 @@
           Edit
           -# = link_to 'Edit', edit_group_path
     .messages
-      .message
-        .upper-message
-          .upper-message__user-name
-            seo
-          .upper-message__date
-            2019/10/31
-        .lower-meesage
-          .lower-message__content
-            Hello world!!
-      .message
-        .upper-message
-          .upper-message__user-name
-            neko
-          .upper-message__date
-            2019/10/31
-        .lower-meesage
-          .lower-message__content
-            Good bye world!!
+      = render partial: 'message', collection: @messages
+      
     .form
       = form_for [@group, @message] do |f|
         = f.text_field :body, class:'form__message', placeholder: 'type a message' 
