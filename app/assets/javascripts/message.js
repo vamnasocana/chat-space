@@ -1,11 +1,11 @@
 $(function() {
   function buildHTML(message){
     var message_body = message.body? message.body : "" ;
-    var message_image = message.image.url? message.image.url : "" ;
-    var html = `<div class="message">
+    var message_image = message.image? message.image : "" ;
+    var html = `<div class="message" data-message-id=${message.id}>
                   <div class="upper-message">
                     <div class="upper-message__user-name">
-                    ${message.name}
+                    ${message.user_name}
                     </div>
                     <div class="upper-message__date">
                     ${message.created_at}
@@ -54,5 +54,29 @@ $(function() {
       $('.form__submit').prop('disabled', false);
     })
   });
+ 
+  var reloadMessages = function(){
+    var last_message_id = $('.message:last').data('message-id');
+    var url = "/groups/" + $('.messages').data('group-id') + "/api/messages"
+    $.ajax({
+      url: url,
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages){
+      var insertHTML = '';
+      $.each(messages, function(i, message) {
+        insertHTML += buildHTML(message)
+      });
+      $('.messages').append(insertHTML);
+    })
+    .fail(function(){
+      alert("メッセージの更新に失敗しました");
+    });
+  };
+  if($('.messages').length){
+  setInterval(reloadMessages, 7000);
+  };
 });
 
