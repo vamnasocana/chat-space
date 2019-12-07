@@ -20,10 +20,11 @@ $(function() {
                 </div>`
     return html
   }
-
-  $('.messages').animate({
-    scrollTop: $('.messages')[0].scrollHeight
-  });
+  if($('.messages').length){
+    $('.messages').animate({
+      scrollTop: $('.messages')[0].scrollHeight
+    });
+  }
 
   $("#new_message").on("submit", function(e) {
     e.preventDefault();
