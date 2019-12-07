@@ -72,7 +72,7 @@ $(function() {
       $('.messages').append(insertHTML);
     })
     .fail(function(){
-      console.log('error');
+      alert("メッセージの更新に失敗しました");
     });
   };
   if($('.messages').length){
